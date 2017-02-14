@@ -1,0 +1,26 @@
+<div class="content-section implementation">
+  <p-pickList [source]="availableProgramCols" [target]="selectedProgramCols" sourceHeader="Programs" targetHeader="Selected" [responsive]="true" [sourceStyle]="{'height':'325px'}" [targetStyle]="{'height':'325px'}">
+
+    <template let-programCol pTemplate="item">
+      <li class="ui-picklist-item" contenteditable="true" [textContent]="programCol.header" (input)="programCol.header=$event.target.textContent">
+        {{programCol.header}}
+      </li>
+    </template>
+  </p-pickList>
+  <h3 class="first">Resizable Mode On</h3>
+  <p-dataTable [value]="availableProgramCols" resizableColumns="true">
+    <p-column *ngFor="let col of selectedProgramCols" [field]="col.field" [header]="col.header" sortable="custom">
+      <template pTemplate="body" let-pro="rowData">
+
+      </template>
+    </p-column>
+  </p-dataTable>
+  <h3 class="first">Resizable Mode Off</h3>
+  <p-dataTable [value]="availableProgramCols">
+    <p-column *ngFor="let col of selectedProgramCols" [field]="col.field" [header]="col.header" sortable="custom">
+      <template pTemplate="body" let-pro="rowData">
+
+      </template>
+    </p-column>
+  </p-dataTable>
+</div>
